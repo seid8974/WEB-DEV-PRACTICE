@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.header-class{
+    height: 3rem;
+    top: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.header-class .nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(36, 35, 35);
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.header-class nav ul{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 10px 0px;
+}
+.header-class nav ul a{
+    text-decoration: none;
+    color: white;
+    font-family: system-ui;
+    font-weight: 40;
+    font-size: 12px;
+}
+.header-class nav ul a:hover{
+    text-align: center;
+    font-size: 13px;
+
+}
+
+.header-icons{
+    width: 16px;
+    cursor: pointer;
+}
+.header-icons:hover{
+   width: 18px;
+   transition: .12s;
+   color: white;
+}
+.search-box{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .header-class nav ul{
+         display: none;
+    }
+
+    .header-class .nav{
+        justify-content: space-between;
+        padding: 15px;
+    }
+    a.line{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15PX;
+        gap: 5px;
+        position: relative;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .line{
+        display: none;
+    }
+}
+
+
+#line-top{
+    width: 15px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+}
+ #line-bottom{
+    width: 15px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+}
+.line:hover{
+    background-color: rgb(71, 66, 66);
+    border: none;
+    text-align: center;
+}
+
+
+
+.active #line-top{
+   transform: rotate(45deg);
+   transition: transform .3192s .1s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+   transform-origin: center;
+}
+.active #line-bottom{
+   transform: rotate(-55deg);
+   transition: transform .3192s .1s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+     transform-origin: center;
+}
+
+
+.bodyOfStore #store-link{
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: aquamarine;
+}
+
+
+
+
+
+.section-1{
+    margin-top: 3.65rem;
+    background-color: rgb(172, 115, 47);
+    color: aquamarine;
+    position: absolute;
+}

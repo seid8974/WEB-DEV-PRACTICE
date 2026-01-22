@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice 1</title>
+</head>
+<body>
+    
+
+    <script>
+        
+        function calculateTotalTax(name,price,discount){
+            let tax = price * (30/100);
+            let total = (price - discount) + tax;
+
+            return (` The ${name} computer price is : ${total}.`)
+        }
+
+        let showTotalTax = calculateTotalTax("hp",100000,100);
+        console.log(showTotalTax);
+
+
+        
+
+        function checkLowerCase(word){
+           let resultValue = '';
+
+           for(let i=0;i < word.legth; i++){
+            let checkLetter = word.charAt(i);
+            if(checkLetter === checkLetter.toLowerCase()){
+                resultValue += checkLetter;
+                 return resultValue;
+            }
+        }
+           
+
+        }
+
+        let lowerCase = checkLowerCase("SFGHGcHFJFaJGHtHFFHJ");
+         
+        console.log(lowerCase);
+
+    </script>
+</body>
+</html>

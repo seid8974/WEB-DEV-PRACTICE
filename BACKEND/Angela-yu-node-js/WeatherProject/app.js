@@ -20,27 +20,46 @@ app.post("/",(req,res) => {
     const units = "metric";
 
    const url = 'https://api.openweathermap.org/data/2.5/weather?q='+ cityName +'&units='+ units +'&appid='+ apikey;
+  https.get(url, (response) => {
+    let rawData = '';
 
-  https.get(url,(response) => {
-    
-       response.on("data",(data) => {
+    response.on('data', (chunk) => {
+      rawData += chunk;
+    });
 
-            const weatherData = JSON.parse(data);
+    response.on('end', () => {
+      try {
+        const weatherData = JSON.parse(rawData);
 
-            const city = weatherData.name;
-            const weatherTemp = weatherData.main.temp;
-            const weatherDescription = weatherData.weather[0].description;
-            const icon = weatherData.weather[0].icon;
-            const imageUrl = 'https://openweathermap.org/img/wn/' + icon + '@2x.png'
+        const cod = weatherData.cod; // OpenWeather may return code as string or number
+        if (response.statusCode !== 200 || (cod && Number(cod) !== 200)) {
+          const message = weatherData.message || 'City not found';
+          return res.status(response.statusCode === 200 ? 400 : response.statusCode).json({ error: message });
+        }
 
-      res.json({
-        city: city,
-        temp: weatherTemp,
-        condition: weatherDescription,
-        image: imageUrl
-      });
-       })
-    })
+        const city = weatherData.name;
+        const weatherTemp = weatherData.main && weatherData.main.temp;
+        const weatherDescription = weatherData.weather && weatherData.weather[0] && weatherData.weather[0].description;
+        const icon = weatherData.weather && weatherData.weather[0] && weatherData.weather[0].icon;
+        const imageUrl = 'https://openweathermap.org/img/wn/' + icon + '@2x.png';
+
+        return res.json({
+          city: city,
+          temp: weatherTemp,
+          condition: weatherDescription,
+          image: imageUrl
+        });
+      } catch (e) {
+        return res.status(500).json({ error: 'Error parsing weather data' });
+      }
+    });
+
+    response.on('error', (err) => {
+      return res.status(500).json({ error: 'Error fetching weather data' });
+    });
+  }).on('error', (err) => {
+    return res.status(500).json({ error: 'Request error' });
+  });
 })
 
 app.listen(port,(req,res) => {

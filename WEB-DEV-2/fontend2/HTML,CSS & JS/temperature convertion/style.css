@@ -1,0 +1,41 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: arial,sans-serif;
+}
+body{
+	background-color: grey;
+}
+.container{
+	background-color: white;
+	width: 25rem;
+	height: 21rem;
+	padding: 10px;
+	margin: 20px auto;
+	text-align: center;
+	border-radius: 10px;
+}
+#textBox{
+	margin: 20px 30px;
+	padding: 4px;
+	font-size: 22px;
+	text-align: center;
+}
+
+#submit{
+	margin: 30px 140px;
+	padding: 7px 15px;
+	font-size: 18px;
+	background-color: indianred;
+	border:none;
+	color: white;
+	border-radius: 8px;
+
+}
+#submit:hover{
+	background-color: darkred;
+}
+#submit:active{
+	background-color: red;
+}

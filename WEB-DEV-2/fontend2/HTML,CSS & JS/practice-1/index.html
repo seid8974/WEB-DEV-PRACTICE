@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>first-practice</title> 
+
+</head>
+<body>
+
+	<h1>hello world</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>
+
+
+
+
+<script>
+	function arraySort(numbers){
+
+let j=true;
+while (j){
+
+	 j=false;
+
+	for(let i=0; i<numbers.length-1;i++){
+		if(numbers[i]>numbers[i+1]){
+			j=true;
+			let temp=numbers[i];
+			numbers[i]=numbers[i+1];
+			numbers[i+1]=temp;
+		}
+	}
+}
+	return numbers;
+}
+
+let showArraySort=arraySort([441,4324,12,45,43,323,21,2,3231,123,34,3]);
+
+console.log(arraySort([444,4444,45,43,323,232,2,222,123,34,3]));
+
+console.log(showArraySort);
+
+
+
+function printMaxiArray(numbers){
+	let maxNum=numbers[0];
+	for(let i=0;i<numbers.length;i++){
+		if(maxNum<numbers[i]){
+			maxNum=numbers[i];
+		}
+	}
+
+	return maxNum;
+}
+
+let showMaximumArray=printMaxiArray([441,4324,12,45,43,323,21,2,3231,123,34,3]);
+
+console.log(`The maximum of array is: ${showMaximumArray}`);
+
+
+function printMinArray(numbers){
+	let minNum = numbers[0];
+	for(let i=0;i < numbers.length;i++){
+		if(minNum > numbers[i]){
+			minNum = numbers[i];
+		}
+	}
+
+	return minNum;
+}`[`
+
+let showMinimumArray=printMinArray([441,4324,12,45,43,323,21,2,3231,123,34,3]);
+
+console.log(`The minimum of array is: ${showMinimumArray}`);
+
+
+
+
+function checkLetterFun(char){
+	let letters="";
+
+	for(let i=0;i<char.length;i++){
+		
+		let singleLetter=char.charAt(i);
+		let toLowerLetter=singleLetter.toLowerCase();
+		if(singleLetter === toLowerLetter){
+			letters += singleLetter;
+		}
+
+	}
+  return letters;
+}
+
+let showCheckLetter=checkLetterFun("DGHrecdFGDeHDEhdreFGDER");
+
+console.log(`The lowecase is: ${showCheckLetter}`);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CALLBACK</title>
+</head>
+<body>
+
+
+	<script>
+		// hello();
+		// goodBye();
+
+
+		// function hello(){
+		// 	setTimeOut(()=>{
+		// 		console.log('hellow');
+		// 	},3000)
+		// }
+
+		// function goodBye(){
+		// 	console.log('good bye')
+		// } 
+
+
+		goodBye(hello);
+
+		function hello(){
+				console.log('hellow');
+		}
+
+		function goodBye(callback){
+			console.log('good bye')
+			callback();
+		} 
+
+
+	</script>	
+</body>
+</html>

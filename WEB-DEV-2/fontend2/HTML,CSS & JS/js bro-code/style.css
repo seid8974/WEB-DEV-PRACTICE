@@ -1,0 +1,29 @@
+.container{
+	margin-top: 200px;
+	border: 2px solid;
+	padding-top: 50px;
+	text-align: center;
+	height: 15rem;
+}
+#myText{
+	text-align: center;
+	font-size: 6rem;
+}
+.containerBtn{
+	text-align: center;
+	margin-top: 34px;
+}
+#resetBtn{
+	margin: 0 15px;
+}
+.buttons{
+	padding: 7px 30px;
+	background-color: skyblue;
+	color: white;
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+}
+.buttons:hover{
+	background-color: blue;
+}

@@ -199,3 +199,15 @@
         flex-direction: column;
       }
     }
+.creator {
+  margin-top: 60px;
+  font-size: 0.7rem;
+  color: #333;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* If you have dark mode toggle */
+body.dark .creator {
+  color: #eee;
+}

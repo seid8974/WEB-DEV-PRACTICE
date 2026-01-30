@@ -33,15 +33,15 @@
 
     try {
         const res = await fetch("/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `city=${encodeURIComponent(city)}`
+          method: "POST",
+          headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: `city=${encodeURIComponent(city)}`
         });
 
         if (!res.ok) {
-        throw new Error("City not found");
+         throw new Error("City not found");
         }
 
         const data = await res.json();

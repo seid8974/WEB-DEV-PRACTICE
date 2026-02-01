@@ -1,0 +1,124 @@
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s;
+  }
+
+  body.dark {
+    background-color: #121212;
+    color: #eee;
+  }
+
+  .container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: background 0.3s;
+  }
+
+  body.dark .container {
+    background: #1e1e1e;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  input, select, button {
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    border: none;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  li.high { background: #f8d7da; }
+  li.medium { background: #fff3cd; }
+  li.low { background: #d4edda; }
+
+  .actions button {
+    margin-left: 5px;
+    padding: 5px 8px;
+  }
+
+  .dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+
+  .toggle-dark {
+    margin-bottom: 10px;
+  }
+
+
+  .container {
+  position: relative; /* IMPORTANT */
+}
+
+/* Small top-right toggle */
+.toggle-dark {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: #222;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s, background 0.3s;
+}
+
+.toggle-dark:hover {
+  transform: scale(1.1);
+}
+
+body.dark .toggle-dark {
+  background: #f4f4f4;
+  color: #121212;
+}

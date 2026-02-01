@@ -1,0 +1,31 @@
+body {
+  background-color: #E8ECEF;
+}
+
+.centered {
+    padding-top: 200px;
+    text-align: center;
+}
+
+.secret-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  background-color: #000;
+}
+
+/* Additional styles for better UX */
+.alert {
+  margin-top: 20px;
+}
+
+.secret-item {
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.btn {
+  margin: 5px;
+}
+

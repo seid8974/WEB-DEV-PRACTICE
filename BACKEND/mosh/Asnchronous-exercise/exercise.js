@@ -42,46 +42,46 @@
 // ---- PROMISE ----
 
 // ---- PROMISE ----
-getCustomer(1)        // ---- PROMISE ----
-    .then((customer) => {
-        console,log('customer: '+customer);
-        if(customer.isGold) return getTopMovies();
-    })
-    .then((movies) => { 
-        console.log('Top Movies: '+movies);
-        return sendEmail('email@example.com', movies);
-    })
-    .then((result) => console.log(result))
-    .catch(err => console.log(err));
+// getCustomer(1)        // ---- PROMISE ----
+//     .then((customer) => {
+//         console.log('customer: '+customer);
+//         if(customer.isGold) return getTopMovies();
+//     })
+//     .then((movies) => { 
+//         console.log('Top Movies: '+movies);
+//         return sendEmail(customer.email, movies);
+//     })
+//     .then((result) => console.log(result))
+//     .catch(err => console.log(err));
 
-function getCustomer(id){
-    return new Promise((resolve,rejects) => {
-        setTimeout(() => {
-            resolve({
-                id:1,
-                name:"Seid Mohammed",
-                isGold:true,
-                email:'email'
-            });
-        },3000);
-    });
-}
+// function getCustomer(id){
+//     return new Promise((resolve,rejects) => {
+//         setTimeout(() => {
+//             resolve({
+//                 id:1,
+//                 name:"Seid Mohammed",
+//                 isGold:true,
+//                 email:'email@example.com'
+//             });
+//         },3000);
+//     });
+// }
 
-function getTopMovies(){
-    return new Promise((resolve,rejects) => {
-        setTimeout(() => {
-            resolve(['movie1','movie2']);
-        },3000);
-    });
-}
+// function getTopMovies(){
+//     return new Promise((resolve,rejects) => {
+//         setTimeout(() => {
+//             resolve(['movie1','movie2']);
+//         },3000);
+//     });
+// }
 
-function sendEmail(email,movies){
-     return new Promise((resolve,rejects) => {
-        setTimeout(() => {
-            resolve('Email Sent...');
-        });
-     });
-}
+// function sendEmail(email,movies){
+//      return new Promise((resolve,rejects) => {
+//         setTimeout(() => {
+//             resolve('Email Sent...');
+//         });
+//      });
+// }
 
 
 
@@ -91,18 +91,49 @@ function sendEmail(email,movies){
 async function notiyCustomer(id) {
     try{
         const customer = await getCustomer(id);
-        console,log('customer: '+customer);
+        console.log('customer: ', customer);
 
         if(customer.isGold){
-            const movies = await getTopMovies(movies);
+            const movies = await getTopMovies();
             console.log('Top Movies: '+movies);
 
             const email = await sendEmail(customer.email,movies);
-            console.log(result)
+            console.log(email)
         }
-    }catch{
+    }catch(err){
         console.log(err);
     }
 }
 
 notiyCustomer(1);
+
+
+
+function getCustomer(id){
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve({
+                id:1,
+                name:"Seid Mohammed",
+                isGold:true,
+                email:'email@example.com'
+            });
+        },3000);
+    });
+}
+
+function getTopMovies(){
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve(['movie1','movie2']);
+        },3000);
+    });
+}
+
+function sendEmail(email,movies){
+     return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve('Email Sent...');
+        });
+     });
+}

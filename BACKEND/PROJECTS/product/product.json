@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Wooden Dining Table",
+    "price": 450,
+    "rating": 4.8,
+    "feature": true,
+    "company": "ikea",
+    "createdAt": "2026-02-08T00:00:00.000Z"
+  },
+  {
+    "name": "Modern Office Chair",
+    "price": 120,
+    "rating": 4.6,
+    "feature": false,
+    "company": "marcos",
+    "createdAt": "2026-02-08T00:05:00.000Z"
+  },
+  {
+    "name": "Luxury Sofa Set",
+    "price": 980,
+    "rating": 4.9,
+    "feature": true,
+    "company": "liddy",
+    "createdAt": "2026-02-08T00:10:00.000Z"
+  },
+  {
+    "name": "Minimalist Bookshelf",
+    "price": 200,
+    "rating": 4.4,
+    "feature": false,
+    "company": "ikea",
+    "createdAt": "2026-02-08T00:15:00.000Z"
+  },
+  {
+    "name": "King Size Bed Frame",
+    "price": 750,
+    "rating": 4.7,
+    "feature": true,
+    "company": "caressa",
+    "createdAt": "2026-02-08T00:20:00.000Z"
+  },
+  {
+    "name": "Glass Coffee Table",
+    "price": 180,
+    "rating": 4.5,
+    "feature": false,
+    "company": "marcos",
+    "createdAt": "2026-02-08T00:25:00.000Z"
+  },
+  {
+    "name": "Leather Recliner Chair",
+    "price": 560,
+    "rating": 4.8,
+    "feature": true,
+    "company": "liddy",
+    "createdAt": "2026-02-08T00:30:00.000Z"
+  },
+  {
+    "name": "Compact TV Stand",
+    "price": 240,
+    "rating": 4.3,
+    "feature": false,
+    "company": "caressa",
+    "createdAt": "2026-02-08T00:35:00.000Z"
+  }
+]

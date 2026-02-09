@@ -1,4 +1,4 @@
- const  { customerModel,validateCustomer } = require('../modules/customer.js');
+ const  { customerModel,validateCustomer } = require('../models/customer.js');
  const mongoose = require('mongoose');
  const express = require('express');
  const router = express.Router();
@@ -9,7 +9,7 @@
  router.get('/',async (req,res) => {
     const customer = await customerModel.find();
     res.send(customer);
- })
+ });
 
  router.get('/:id',async (req,res) => {
     const customer = await customerModel.findById(req.params.id);
@@ -17,7 +17,7 @@
     if(!customer) return res.status(404).send('the Customer with this ID Not Found!');
 
     res.send(customer);
- })
+ });
 
 
  router.post('/',async (req,res) => {
@@ -32,7 +32,7 @@
     
     await customer.save();
     res.send(customer);
- })
+ });
 
 router.put('/:id',async (req,res) => {
     const {error} = validateCustomer(req.body);
@@ -44,7 +44,7 @@ router.put('/:id',async (req,res) => {
  
  
     res.send(customer);
-})
+});
 
 router.delete('/:id',async (req,res) => {
     const customer = await customerModel.findByIdAndDelete(req.params.id);
@@ -53,7 +53,7 @@ router.delete('/:id',async (req,res) => {
 
    
     res.send(customer);
-})
+});
    
 
 

@@ -1,3 +1,17 @@
+# dependencies
 node_modules/
+
+# env
 .env
+
+# logs
+*.log
+logfile.log
+
+# test / scratch
+BACKEND/PROJECTS/
+BACKEND/mosh/test/
+
+# OS
 .DS_Store
+Thumbs.db

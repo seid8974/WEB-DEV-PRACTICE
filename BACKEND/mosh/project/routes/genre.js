@@ -1,7 +1,9 @@
+const admin = require('../middleware/admin.js');
+const auth = require('../middleware/auth.js');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
-const { genreModel,validateGenre} = require('../modules/genre.js');
+const { genreModel,validateGenre} = require('../models/genre.js');
 
 mongoose.connect('mongodb://localhost:27017/vidlyDB');
 
@@ -25,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/vidlyDB');
 router.get('/',async (req,res) => {
     const genres = await genreModel.find();
     res.send(genres);
-})
+});
 
 router.get('/:id',async (req,res) => {
     const genre = await genreModel.findById(req.params.id);
@@ -33,10 +35,10 @@ router.get('/:id',async (req,res) => {
     if(!genre) return res.status(404).send('the genre with this ID Not Found!');
 
     res.send(genre);
-})
+});
 
 
-router.post('/',async (req,res) => {
+router.post('/', auth, async (req,res) => {
     const {error} = validateGenre(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
@@ -53,7 +55,7 @@ router.post('/',async (req,res) => {
     
     await genre.save();
     res.send(genre);
-})
+});
 
 router.put('/:id',async (req,res) => {
     const {error} = validateGenre(req.body);
@@ -67,9 +69,12 @@ router.put('/:id',async (req,res) => {
 
     // genre.name = req.body.name;
     res.send(genre);
-})
+});
 
-router.delete('/:id',async (req,res) => {
+router.delete('/:id', [auth, admin], async (req,res) => {
+    const {error} = validateGenre(req.body);
+    if(error) return res.status(400).send(error.details[0].message);
+
     const genre = await genreModel.findByIdAndDelete(req.params.id);
 
     // const genre = genres.find(c => c.id === parseInt(req.params.id));
@@ -79,7 +84,7 @@ router.delete('/:id',async (req,res) => {
     // genres.splice(index,1);
 
     res.send(genre);
-})
+});
 
 
 // function validateGenre(genre){

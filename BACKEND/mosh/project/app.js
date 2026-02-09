@@ -1,20 +1,19 @@
-require('dotenv').config();
-const genre = require('./routes/genre.js');
-const home = require('./routes/home.js');
-const customer = require('./routes/customer.js');
 const express = require('express');
+const winston = require('winston');
 
 const app = express();
-// const port = process.env.PORT || 3000;
-const port = 3000;
+const port = process.env.PORT || 3000;
+// const port = 3000;
+   
 
-app.use(express.json()); 
-app.use(express.urlencoded({extended:true})); 
-app.use('/',home);
-app.use('/api/genres/',genre);
-app.use('/api/customers/',customer);
+require('./startup/error-handling')();
+require('./startup/routes')(app);
+require('./startup/db')();
+require('./startup/enviroment')();
+require('./startup/validation')();
+
 
 
 app.listen(port,() => {
-    console.log('the server is running on port :'+port);
-})
+    winston.info('the server is running on port :'+ port);
+});

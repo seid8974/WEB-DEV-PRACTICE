@@ -3,6 +3,6 @@ const home = express.Router();
 
 home.get('/',(req,res) => {
     res.send("GENRES!");
-})
+});
 
 module.exports = home;

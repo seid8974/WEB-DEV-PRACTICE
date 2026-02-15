@@ -1,0 +1,66 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  border: 3px solid rgb(32, 30, 30);
+  width: 320px;
+  margin: 20px 40px;
+}
+
+.container img {
+  width: 100%;
+  height: 150px;
+}
+
+.personality-container {
+  margin-top: 0px;
+  padding: 20px;
+}
+
+.personality p {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 10px;
+}
+
+.skill {
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 11px;
+  color: black;
+}
+.skill-name {
+  margin-right: 5px;
+}
+
+/* Colors */
+.blue {
+  background-color: #4da6ff;
+}
+.yellow {
+  background-color: #ffd84d;
+}
+.green {
+  background-color: #a6e3a1;
+}
+.red {
+  background-color: #ff6b6b;
+}
+.cyan {
+  background-color: #66d9e8;
+}
+.orange {
+  background-color: #ffa94d;
+}

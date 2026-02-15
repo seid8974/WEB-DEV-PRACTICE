@@ -1,22 +1,37 @@
 import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [step, setStep] = useState(1);
+  const [count, setCount] = useState();
+  const [step, setStep] = useState();
 
   const date = new Date(" Feb 14 2026 ");
   date.setDate(date.getDate() + count);
+
+  function handleReset() {
+    setCount(0);
+    setStep(1);
+  }
+
   return (
     <div className="container">
       <div>
-        <button onClick={() => setStep(step - 1)}>-</button>
-        <span>step: {step}</span>
-        <button onClick={() => setStep(step + 1)}>+</button>
+        <input
+          type="range"
+          min={0}
+          max={10}
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        <span>{step}</span>
       </div>
 
       <div>
         <button onClick={() => setCount(count - step)}>-</button>
-        <span>count: {count}</span>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
         <button onClick={() => setCount(count + step)}>+</button>
       </div>
       <p>
@@ -29,6 +44,12 @@ function App() {
         </span>
         <span>{date.toDateString()}</span>
       </p>
+
+      {count !== 0 || step !== 1 ? (
+        <div>
+          <button onClick={handleReset}>Reset</button>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -41,21 +41,57 @@ export default function App() {
             <div className={`${step >= 2 ? "active" : ""}`}>2</div>
             <div className={`${step >= 3 ? "active" : ""} `}>3</div>
           </div>
-          <div className="message">
-            <p>
-              Step {step}: {messages[step - 1]}
-            </p>
-          </div>
+
+          <StepMessage step={step}>
+            {messages[step - 1]}
+            <div>
+              <Button
+                btn="btn"
+                onClick={() => alert(`Learn How To ${messages[step - 1]}`)}
+              >
+                Learn How
+              </Button>
+            </div>
+          </StepMessage>
+          {/* <p>
+              <h3>Step {step}:</h3> {messages[step - 1]}
+            </p> */}
+
           <div className="buttons">
-            <button className="btn" onClick={handlePrevious}>
+            <Button btn="btn" onClick={handlePrevious}>
+              <span>👈</span> Previous
+            </Button>
+
+            {/* <button className="btn" onClick={handlePrevious}>
               Previous
-            </button>
-            <button className="btn" onClick={handleNext}>
+            </button> */}
+
+            <Button btn="btn" onClick={handleNext}>
+              Next <span>👉</span>
+            </Button>
+            {/* <button className="btn" onClick={handleNext}>
               Next
-            </button>
+            </button> */}
           </div>
         </div>
       )}
     </>
+  );
+}
+
+function Button({ btn, onClick, children }) {
+  return (
+    <button className={btn} onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
+function StepMessage({ step, children }) {
+  return (
+    <div className="message">
+      <h3>Step {step}:</h3>
+      {children}
+    </div>
   );
 }

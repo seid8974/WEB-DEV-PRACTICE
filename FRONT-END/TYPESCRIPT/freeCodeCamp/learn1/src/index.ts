@@ -120,7 +120,7 @@ export function getPizzaDetail(identifier: string | number): Pizza | undefined {
 // addNewPizza({ id: nextPizzaId++, name: "BBQ Chicken", price: 12 });
 // addNewPizza({ id: nextPizzaId++, name: "Spicy Sausage", price: 11 });
 
-placeOrder("Chicken Bacon Ranch");
+// placeOrder("Chicken Bacon Ranch");
 completeOrder(1);
 
 // console.log("Menu:", menu);

@@ -11,9 +11,16 @@ import "./Form.css";
 // };
 
 const schema = z.object({
-  name: z.string().min(1, "The name field is required!")
-    .min(3, "Name must be at least 3 characters"),
-  age: z.number({ required_error: "Age is Required!"}).min(18,{message: "Age must be at least 18"}),
+  name: z
+    .string()
+    .min(1, { message: "The name field is required!" })
+    .min(3, { message: "Name must be at least 3 characters" }),
+  age: z
+    .number()
+    .refine((val) => !isNaN(val), {
+      message: "Age is Required!",
+    })
+    .min(18, { message: "Age must be at least 18" }),
 });
 
 type Person = z.infer<typeof schema>;
@@ -22,9 +29,9 @@ const Form = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  // } = useForm<Person>();
-   } = useForm<Person>( { resolver: zodResolver(schema)});
+    formState: { errors, isValid },
+    // } = useForm<Person>();
+  } = useForm<Person>({ resolver: zodResolver(schema) });
 
   // const nameRef = useRef<HTMLInputElement>(null);
   // const ageRef = useRef<HTMLInputElement>(null);
@@ -57,7 +64,7 @@ const Form = () => {
           id="name"
           // onChange={(event) => setPerson({...person,name: event.target.value})} value={person.name}
           // {...register("name", { required: true, minLength: 3 })}
-          { ...register("name")}
+          {...register("name")}
           type="text"
           className="form-control"
         />
@@ -68,9 +75,7 @@ const Form = () => {
         {errors.name?.type === "minLength" && (
           <p className="text-danger">Name must be at least 3 characters</p>
         )} */}
-        { errors.name && (<p className="text-danger">{errors.name.message}</p>)}
-
-
+        {errors.name && <p className="text-danger">{errors.name.message}</p>}
       </div>
       <div className="mb-3">
         <label htmlFor="age" className="form-label">
@@ -79,14 +84,16 @@ const Form = () => {
         <input
           id="age"
           // value={person.age} onChange={(event) => setPerson({...person, age: parseInt(event.target.value)})}
-          {...register("age", {valueAsNumber: true})}
-        
+          // {...register("age", { valueAsNumber: true })}
+          {...register("age", {
+            setValueAs: (v) => (v === "" ? undefined : Number(v)),
+          })}
           type="number"
           className="form-control"
         />
-         { errors.age && (<p className="text-danger">{errors.age.message}</p>)}
+        {errors.age && <p className="text-danger">{errors.age.message}</p>}
       </div>
-      <button className="btn btn-primary">Submit</button>
+      <button disabled={ !isValid } className="btn btn-primary">Submit</button>
     </form>
   );
 };

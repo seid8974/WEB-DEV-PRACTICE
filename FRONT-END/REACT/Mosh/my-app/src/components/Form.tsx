@@ -1,15 +1,16 @@
-import React,{ useRef,useState } from "react";
-import type { FormEvent } from "react";
-import {useForm, type FieldValue} from "react-hook-form";
+// import React,{ useRef,useState } from "react";
+// import type { FormEvent } from "react";
+import { useForm } from "react-hook-form";
 import "./Form.css";
 
-// type Person = {
-//   name: string;
-//   age: number;
-// };
+interface Person  {
+  name: string;
+  age: number;
+};
+
 
 const Form = () => {
-const { register,handleSubmit } = useForm(); 
+const { register,handleSubmit,formState: { errors } } = useForm<Person>(); 
 
 // const nameRef = useRef<HTMLInputElement>(null);
 // const ageRef = useRef<HTMLInputElement>(null);
@@ -30,19 +31,21 @@ const { register,handleSubmit } = useForm();
 //    console.log(person);
 // }
 
-const onSubmit = (data: FieldValue) => console.log(data);
+const onSubmit = (data: Person) => console.log(data);
 
   return (
-    <form className="form" onSubmit={ handleSubmit() }>
+    <form className="form" onSubmit={ handleSubmit(onSubmit) }>
       <div className="mb-3">
         <label htmlFor="name" className="form-label">
           Name
         </label>
         <input id="name" 
         // onChange={(event) => setPerson({...person,name: event.target.value})} value={person.name}
-        { ...register("name") }
+        { ...register("name", { required: true, minLength: 3 }) }
          type="text" className="form-control" />
       </div>
+      { errors.name?.type === 'required' && <p className="text-danger"> The Name field is Required. </p> }
+      { errors.name?.type === 'minLength' && <p className="text-danger">The Name must be at least 3 character. </p> }
       <div className="mb-3">
         <label htmlFor="age" className="form-label">
           Age
